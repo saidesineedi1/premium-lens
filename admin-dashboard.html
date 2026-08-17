@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard - Premium Lens Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-brand">
+            <img src="./assets/logo photo.jpg" alt="Premium Lens Logo" class="sidebar-logo">
+            <div class="sidebar-brand-text">
+                <h2>Premium Lens</h2>
+                <span>Studio Admin</span>
+            </div>
+        </div>
+
+        <div class="sidebar-menu-wrapper">
+            <div class="sidebar-category">Core</div>
+
+            <a class="nav-link active" data-tab="tab-admin-overview">
+                <i data-lucide="layout-dashboard"></i>
+                <span class="tab-text">Overview</span>
+            </a>
+
+            <a class="nav-link" data-tab="tab-admin-analytics">
+                <i data-lucide="line-chart"></i>
+                <span class="tab-text">Analytics & Trends</span>
+            </a>
+
+            <div class="sidebar-category">Management</div>
+
+            <a class="nav-link" data-tab="tab-admin-bookings">
+                <i data-lucide="calendar-check"></i>
+                <span class="tab-text">Bookings</span>
+                <span class="nav-badge">12 New</span>
+            </a>
+
+            <a class="nav-link" data-tab="tab-admin-revenue">
+                <i data-lucide="bar-chart-3"></i>
+                <span class="tab-text">Revenue & Sales</span>
+            </a>
+
+            <a class="nav-link" data-tab="tab-admin-clients">
+                <i data-lucide="users"></i>
+                <span class="tab-text">Clients</span>
+            </a>
+
+            <a class="nav-link" data-tab="tab-admin-services">
+                <i data-lucide="camera"></i>
+                <span class="tab-text">Services & Gear</span>
+            </a>
+
+            <div class="sidebar-category">Preferences</div>
+
+            <a class="nav-link" data-tab="tab-admin-settings">
+                <i data-lucide="sliders"></i>
+                <span class="tab-text">Studio Settings</span>
+            </a>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="nav-link" style="padding: 8px 12px; font-size: 13px;">
+                <i data-lucide="globe"></i>
+                <span>Public Website</span>
+            </a>
+            <a href="login.html" class="logout-btn">
+                <i data-lucide="log-out"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle Navigation">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="header-title">
+                    <h1 data-dash-type="admin">Admin Dashboard – Overview</h1>
+                    <p>Premium Lens Studio Management & Production Portal</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+
+                <button class="header-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+                    <i data-lucide="moon"></i>
+                </button>
+
+                <button class="header-btn" id="notifBtn" aria-label="View Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="notification-badge"></span>
+                </button>
+
+                <div class="notif-dropdown" id="notifDropdown">
+                    <div class="notif-header">
+                        <span>Notifications (3)</span>
+                        <span>Mark all read</span>
+                    </div>
+                    <div class="notif-list">
+                        <div class="notif-item">
+                            <div class="notif-icon"><i data-lucide="calendar"></i></div>
+                            <div class="notif-info">
+                                <h4>New Wedding Shoot Booked</h4>
+                                <p>Client: Rohan & Pooja • 24th Oct 2026</p>
+                            </div>
+                        </div>
+                        <div class="notif-item">
+                            <div class="notif-icon"><i data-lucide="credit-card"></i></div>
+                            <div class="notif-info">
+                                <h4>Payment Received ₹85,000</h4>
+                                <p>Corporate Event session paid in full</p>
+                            </div>
+                        </div>
+                        <div class="notif-item">
+                            <div class="notif-icon"><i data-lucide="star"></i></div>
+                            <div class="notif-info">
+                                <h4>New 5-Star Review Received</h4>
+                                <p>"The portrait shoot exceeded all expectations!"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-chip" onclick="document.querySelector('[data-tab=tab-admin-settings]').click()">
+                    <div class="avatar-fallback">PL</div>
+                    <div class="profile-chip-info">
+                        <span class="profile-chip-name">Studio Admin</span>
+                        <span class="profile-chip-role">Master Access</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+
+            <section class="tab-section active" id="tab-admin-overview">
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h2>Welcome back, <span>Director</span>!</h2>
+                        <p>Here is your daily studio performance summary. You have <strong>4 shoots scheduled
+                                today</strong>, 12 pending booking approvals, and revenue is trending up by 18.4% this
+                            month.</p>
+                    </div>
+                    <div class="welcome-cta">
+                        <button class="btn-primary"
+                            onclick="document.querySelector('[data-tab=tab-admin-bookings]').click()">
+                            <i data-lucide="plus-circle"></i> New Booking
+                        </button>
+                        <button class="btn-outline"
+                            onclick="document.querySelector('[data-tab=tab-admin-analytics]').click()">
+                            <i data-lucide="file-text"></i> Reports
+                        </button>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon-box gold">
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                        <div class="metric-info">
+                            <h3>Monthly Revenue</h3>
+                            <div class="metric-number">₹8,42,500</div>
+                            <div class="metric-trend up">
+                                <i data-lucide="trending-up"></i> +18.4% from last month
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon-box green">
+                            <i data-lucide="calendar"></i>
+                        </div>
+                        <div class="metric-info">
+                            <h3>Active Bookings</h3>
+                            <div class="metric-number">48 Shoots</div>
+                            <div class="metric-trend up">
+                                <i data-lucide="trending-up"></i> +12 new this week
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon-box blue">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="metric-info">
+                            <h3>Total Clients</h3>
+                            <div class="metric-number">1,284</div>
+                            <div class="metric-trend up">
+                                <i data-lucide="trending-up"></i> 92% retention rate
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon-box orange">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div class="metric-info">
+                            <h3>Studio Rating</h3>
+                            <div class="metric-number">4.96 ★</div>
+                            <div class="metric-trend up">
+                                <i data-lucide="star"></i> 420+ Verified reviews
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div class="chart-title">
+                                <h3>Revenue Performance (Line Chart)</h3>
+                                <p>Annual growth trajectory comparison with previous fiscal year</p>
+                            </div>
+                            <div class="chart-actions">
+                                <select aria-label="Revenue Timeframe">
+                                    <option>FY 2025 - 2026</option>
+                                    <option>Last 6 Months</option>
+                                    <option>Quarterly View</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-canvas-wrapper">
+                            <canvas id="revenueLineChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div class="chart-title">
+                                <h3>Shoots by Category (Bar Graph)</h3>
+                                <p>Total completed sessions breakdown</p>
+                            </div>
+                        </div>
+                        <div class="chart-canvas-wrapper">
+                            <canvas id="servicesBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <h3>Upcoming Photography Sessions</h3>
+                        <button class="btn-outline"
+                            onclick="document.querySelector('[data-tab=tab-admin-bookings]').click()">View All
+                            Bookings</button>
+                    </div>
+                    <div class="custom-table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Client Name</th>
+                                    <th>Service Package</th>
+                                    <th>Date & Time</th>
+                                    <th>Location</th>
+                                    <th>Lead Photographer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Aditya & Sunita</strong><br><small
+                                            style="color:var(--text-muted)">aditya.m@gmail.com</small></td>
+                                    <td>Royal Wedding Cinematography</td>
+                                    <td>24 Oct 2026, 10:00 AM</td>
+                                    <td>Umaid Bhawan, Jodhpur</td>
+                                    <td>Kavya R. (Lead)</td>
+                                    <td>₹1,85,000</td>
+                                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nexus Tech Innovations</strong><br><small
+                                            style="color:var(--text-muted)">events@nexus.io</small></td>
+                                    <td>Annual Corporate Summit</td>
+                                    <td>28 Oct 2026, 09:00 AM</td>
+                                    <td>Grand Hyatt, Mumbai</td>
+                                    <td>Arjun Verma</td>
+                                    <td>₹75,000</td>
+                                    <td><span class="status-badge paid">Paid</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Meera Singhania</strong><br><small
+                                            style="color:var(--text-muted)">meera.s@outlook.com</small></td>
+                                    <td>Maternity & Newborn Fine Art</td>
+                                    <td>02 Nov 2026, 03:30 PM</td>
+                                    <td>Studio Bay 2, Bandra</td>
+                                    <td>Sneha Kapur</td>
+                                    <td>₹35,000</td>
+                                    <td><span class="status-badge pending">Pending Deposit</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vikram & Ananya</strong><br><small
+                                            style="color:var(--text-muted)">vikram.a@yahoo.com</small></td>
+                                    <td>Sunset Pre-Wedding Story</td>
+                                    <td>05 Nov 2026, 04:00 PM</td>
+                                    <td>Alibaug Beachside</td>
+                                    <td>Kavya R.</td>
+                                    <td>₹65,000</td>
+                                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-section" id="tab-admin-analytics">
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <h3>Detailed Studio Growth Analytics</h3>
+                        <span style="color: var(--accent-yellow); font-size: 13px; font-weight: 600;">Data sync:
+                            Realtime</span>
+                    </div>
+                    <p style="margin-bottom: 20px; line-height: 1.6;">Gain deep insights into client acquisition
+                        channels, peak booking months, gear utilization ratios, and average client lifetime value for
+                        Premium Lens Studio.</p>
+
+                    <div class="metrics-grid" style="margin-bottom: 24px;">
+                        <div class="metric-card">
+                            <div class="metric-icon-box blue"><i data-lucide="clock"></i></div>
+                            <div class="metric-info">
+                                <h3>Avg Delivery Time</h3>
+                                <div class="metric-number">4.2 Days</div>
+                                <div class="metric-trend up"><i data-lucide="check"></i> 48 hrs faster than goal</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon-box green"><i data-lucide="repeat"></i></div>
+                            <div class="metric-info">
+                                <h3>Repeat Client Rate</h3>
+                                <div class="metric-number">34.8%</div>
+                                <div class="metric-trend up"><i data-lucide="trending-up"></i> +5.2% YoY</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon-box gold"><i data-lucide="image"></i></div>
+                            <div class="metric-info">
+                                <h3>Photos Delivered</h3>
+                                <div class="metric-number">48,200+</div>
+                                <div class="metric-trend up"><i data-lucide="arrow-up"></i> High resolution RAW/JPG
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-section" id="tab-admin-bookings">
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <h3>All Bookings & Production Schedules</h3>
+                        <button class="btn-primary"><i data-lucide="plus"></i> Add New Shoot</button>
+                    </div>
+                    <div class="custom-table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Client</th>
+                                    <th>Package</th>
+                                    <th>Date</th>
+                                    <th>Equipment Pack</th>
+                                    <th>Fee</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#PL-9021</strong></td>
+                                    <td>Priya Deshmukh</td>
+                                    <td>Bridal Editorial</td>
+                                    <td>12 Nov 2026</td>
+                                    <td>Sony A7R V + 85mm f/1.2 GM</td>
+                                    <td>₹45,000</td>
+                                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                                    <td><button class="btn-outline"
+                                            style="padding:4px 12px; font-size:11px;">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PL-9022</strong></td>
+                                    <td>Karan Johar Group</td>
+                                    <td>Commercial Fashion</td>
+                                    <td>15 Nov 2026</td>
+                                    <td>Hasselblad H6D-100c + Profoto Rig</td>
+                                    <td>₹2,50,000</td>
+                                    <td><span class="status-badge paid">Paid</span></td>
+                                    <td><button class="btn-outline"
+                                            style="padding:4px 12px; font-size:11px;">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PL-9023</strong></td>
+                                    <td>Siddharth & Tara</td>
+                                    <td>Destination Wedding</td>
+                                    <td>20 Nov 2026</td>
+                                    <td>Dual FX3 Rig + DJI Inspire 3 Drone</td>
+                                    <td>₹3,20,000</td>
+                                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                                    <td><button class="btn-outline"
+                                            style="padding:4px 12px; font-size:11px;">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#PL-9024</strong></td>
+                                    <td>Rohan Oberoi</td>
+                                    <td>Executive Branding Headshots</td>
+                                    <td>22 Nov 2026</td>
+                                    <td>Studio Strobe + Canon R5C</td>
+                                    <td>₹25,000</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td><button class="btn-outline"
+                                            style="padding:4px 12px; font-size:11px;">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-section" id="tab-admin-revenue">
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <h3>Financial Statements & Invoicing Overview</h3>
+                        <button class="btn-primary"><i data-lucide="download"></i> Download GST Invoices</button>
+                    </div>
+                    <div class="metrics-grid" style="margin-bottom: 24px;">
+                        <div class="metric-card">
+                            <div class="metric-icon-box gold"><i data-lucide="pie-chart"></i></div>
+                            <div class="metric-info">
+                                <h3>Total Gross FY26</h3>
+                                <div class="metric-number">₹64,80,000</div>
+                                <div class="metric-trend up"><i data-lucide="trending-up"></i> On track to reach ₹1 Cr
+                                </div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon-box green"><i data-lucide="check-circle"></i></div>
+                            <div class="metric-info">
+                                <h3>Settled Payments</h3>
+                                <div class="metric-number">₹58,35,000</div>
+                                <div class="metric-trend up">90% Collected</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon-box orange"><i data-lucide="alert-circle"></i></div>
+                            <div class="metric-info">
+                                <h3>Outstanding Receivables</h3>
+                                <div class="metric-number">₹6,45,000</div>
+                                <div class="metric-trend down">Across 8 invoices</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-section" id="tab-admin-clients">
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <h3>Client Relationship Management (CRM)</h3>
+                        <button class="btn-primary"><i data-lucide="user-plus"></i> Add Client</button>
+                    </div>
+                    <div class="custom-table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Client Name</th>
+                                    <th>Contact Information</th>
+                                    <th>Total Shoots</th>
+                                    <th>Lifetime Value</th>
+                                    <th>Category</th>
+                                    <th>Last Session</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Pooja Bhattacharya</strong></td>
+                                    <td>pooja.b@gmail.com • +91 98201 11223</td>
+                                    <td>4 Sessions</td>
+                                    <td>₹2,80,000</td>
+                                    <td><span class="status-badge confirmed">VIP Gold</span></td>
+                                    <td>October 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rajesh & Simran</strong></td>
+                                    <td>rajesh.simran@outlook.com • +91 98199 44556</td>
+                                    <td>2 Sessions</td>
+                                    <td>₹1,45,000</td>
+                                    <td><span class="status-badge paid">Premium</span></td>
+                                    <td>September 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fashion House Inc</strong></td>
+                                    <td>accounts@fashionhouse.in • +91 22 2640 9900</td>
+                                    <td>8 Sessions</td>
+                                    <td>₹6,20,000</td>
+                                    <td><span class="status-badge confirmed">Corporate Retainer</span></td>
+                                    <td>August 2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-section" id="tab-admin-services">
+                <div class="welcome-banner" style="margin-bottom: 20px;">
+                    <div class="welcome-text">
+                        <h2>Premium Lens <span>Studio Service Offerings</span></h2>
+                        <p>Manage photography services, packages, pricing tiers, and studio inventory catalog.</p>
+                    </div>
+                    <button class="btn-primary"><i data-lucide="plus"></i> Add Service</button>
+                </div>
+
+                <div class="cards-grid-3">
+                    <div class="feature-item-card">
+                        <div class="feature-img-wrapper">
+                            <img src="./assets/services1.jpg" alt="Wedding Photography">
+                        </div>
+                        <div class="feature-body">
+                            <h4>Signature Wedding Photography</h4>
+                            <p>Full spectrum cinematic wedding coverage with drone aerials, candid moments, and luxury
+                                coffee table albums.</p>
+                            <div class="feature-footer">
+                                <span class="price-tag">₹1,25,000+</span>
+                                <button class="btn-outline" style="padding:4px 12px; font-size:11px;">Configure</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-item-card">
+                        <div class="feature-img-wrapper">
+                            <img src="./assets/services2.jpg" alt="Portrait Photography">
+                        </div>
+                        <div class="feature-body">
+                            <h4>Editorial & Portrait Sessions</h4>
+                            <p>Studio lighting mastery and artistic color grading for celebrities, models, executives,
+                                and families.</p>
+                            <div class="feature-footer">
+                                <span class="price-tag">₹25,000+</span>
+                                <button class="btn-outline" style="padding:4px 12px; font-size:11px;">Configure</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-item-card">
+                        <div class="feature-img-wrapper">
+                            <img src="./assets/services3.jpg" alt="Event Photography">
+                        </div>
+                        <div class="feature-body">
+                            <h4>Corporate & Grand Events</h4>
+                            <p>High-energy corporate summits, international fashion shows, and gala night live capture
+                                with fast turnaround.</p>
+                            <div class="feature-footer">
+                                <span class="price-tag">₹60,000+</span>
+                                <button class="btn-outline" style="padding:4px 12px; font-size:11px;">Configure</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-section" id="tab-admin-settings">
+                <div class="data-card">
+                    <div class="data-card-header">
+                        <h3>Studio Settings & Configuration</h3>
+                    </div>
+                    <form class="form-grid"
+                        onsubmit="event.preventDefault(); alert('Studio settings updated successfully!');">
+                        <div class="form-group">
+                            <label>Studio Legal Name</label>
+                            <input type="text" class="form-input" value="Premium Lens Photography Studio LLP">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Email</label>
+                            <input type="email" class="form-input" value="contact@premiumlens.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Primary Phone</label>
+                            <input type="tel" class="form-input" value="+91 98765 43210">
+                        </div>
+                        <div class="form-group">
+                            <label>Currency Symbol</label>
+                            <input type="text" class="form-input" value="INR (₹)">
+                        </div>
+                        <div class="form-group">
+                            <label>Studio Studio Address</label>
+                            <input type="text" class="form-input" value="Bandra West, Luxury Studio Bay 4, Mumbai">
+                        </div>
+                        <div class="form-group">
+                            <label>Default GST / Tax Rate (%)</label>
+                            <input type="number" class="form-input" value="18">
+                        </div>
+                        <div style="grid-column: 1 / -1; margin-top: 12px;">
+                            <button type="submit" class="btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
