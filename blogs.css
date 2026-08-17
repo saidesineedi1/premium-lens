@@ -525,7 +525,7 @@ body.light-mode header {
 }
 
 body.light-mode .logo-text h2 {
-    color: #996515;
+    color: #D4AF37;
 }
 
 body.light-mode .logo-text p {
@@ -539,7 +539,7 @@ body.light-mode nav ul>li>a {
 
 body.light-mode nav ul>li>a:hover,
 body.light-mode nav ul>li>a.nav-active {
-    color: #996515 !important;
+    color: #D4AF37 !important;
 }
 
 body.light-mode .dropdown-menu {
@@ -555,7 +555,7 @@ body.light-mode .dropdown-menu li a {
 
 body.light-mode .dropdown-menu li a:hover {
     background: rgba(212, 175, 55, 0.12);
-    color: #996515;
+    color: #D4AF37;
 }
 
 body.light-mode #themeBtn,
@@ -577,7 +577,7 @@ body.light-mode .blog-featured-section {
 }
 
 body.light-mode .blog-featured-section .section-title span {
-    color: #996515;
+    color: #D4AF37;
 }
 
 body.light-mode .blog-featured-section .section-title h2 {
@@ -599,13 +599,13 @@ body.light-mode .featured-card:hover {
 body.light-mode .featured-badge-tag {
     background: rgba(255, 255, 255, 0.92);
     border: 1px solid #B88E28;
-    color: #996515;
+    color: #D4AF37;
     backdrop-filter: blur(8px);
 }
 
 body.light-mode .featured-meta .category {
     background: rgba(184, 142, 40, 0.14);
-    color: #996515;
+    color: #D4AF37;
 }
 
 body.light-mode .featured-meta .date {
@@ -613,7 +613,7 @@ body.light-mode .featured-meta .date {
 }
 
 body.light-mode .featured-meta .date .lucide {
-    color: #996515;
+    color: #D4AF37;
 }
 
 body.light-mode .featured-content h2 {
@@ -621,7 +621,7 @@ body.light-mode .featured-content h2 {
 }
 
 body.light-mode .featured-card:hover .featured-content h2 {
-    color: #996515;
+    color: #D4AF37;
 }
 
 body.light-mode .featured-content p {
@@ -633,7 +633,7 @@ body.light-mode .blog-categories-section {
 }
 
 body.light-mode .blog-categories-section .section-title span {
-    color: #996515;
+    color: #D4AF37;
 }
 
 body.light-mode .blog-categories-section .section-title h2 {

@@ -479,7 +479,7 @@
 }
 
 body.light-mode .info-card h3 {
-    color: #996515;
+    color: #D4AF37;
 }
 
 .info-card p {
@@ -726,7 +726,7 @@ body.light-mode .map-placeholder-container {
 }
 
 body.light-mode .map-details-container address strong {
-    color: #996515;
+    color: #D4AF37;
 }
 
 .map-details-container .btn {
